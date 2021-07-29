@@ -1,7 +1,8 @@
 const express = require('express')
   , bodyParser = require('body-parser')
   , cors = require('cors')
-  , docusignController = require('./lib/controllers/docusign.js');
+  , envelopeController = require('./lib/controllers/docusignEnvelope.js')
+  , userController = require('./lib/controllers/docusignUser.js')
 
 // Setup server port
 const port = process.env.PORT || 5000;
@@ -12,7 +13,9 @@ const app = express()
   .use(bodyParser.json())
 
   // Routes
-  .post('/envelope/send', docusignController.sendEnvelope )
+  .post('/envelope/send', envelopeController.sendEnvelope )
+  .get('/group/users', userController.getGroupUsers)
+  .post('/group/user/create', userController.createGroupUser)
 
 
 
