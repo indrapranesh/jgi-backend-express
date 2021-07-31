@@ -1,7 +1,7 @@
 const express = require('express')
   , bodyParser = require('body-parser')
   , cors = require('cors')
-  , envelopeController = require('./lib/controllers/docusignEnvelope.js')
+  , envelopeController = require('./lib/controllers/envelopeController.js')
   , userController = require('./lib/controllers/docusignUser.js')
   , auditController = require('./lib/controllers/auditController.js')
 
@@ -22,6 +22,8 @@ const app = express()
 
   //Audit
   .get('/audits', auditController.getAllAudits)
+  .post('/audit', auditController.createAudit)
+  .get('/review/envelopes/:id', auditController.getEnvelopesByReview)
 
 
 // start server
