@@ -19,6 +19,8 @@ const app = express()
   .post('/envelope/send', envelopeController.sendEnvelope )
   .get('/group/users', userController.getGroupUsers)
   .post('/group/user/create', userController.createGroupUser)
+  .get('/envelope/data/:id', envelopeController.getEnvelopeData)
+  .get('/envelope/map/:id', envelopeController.getMapImage)
 
   //Audit
   .get('/audits', auditController.getAllAudits)
